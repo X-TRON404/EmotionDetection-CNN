@@ -4,9 +4,9 @@ import numpy as np
 from keras.models import model_from_json
 from keras.preprocessing import image
 
-model = model_from_json(open("EmotionDetectionDeep.json", "r").read())
+model = model_from_json(open("EmotionDetectionDeep-12.json", "r").read())
 
-model.load_weights('EmotionDetectionDeep.h5')
+model.load_weights('EmotionDetectionDeep-10.h5')
 
 
 face_haar_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -33,7 +33,7 @@ while True:
 
         predictions = model.predict(img_pixels)
 
-        #here the network returns the probable values for emotions the maximum value is chosen
+        #here the network returns the probable values for emotions and the maximum value is chosen
         max_index = np.argmax(predictions[0])
 
         emotions = ('angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral')
